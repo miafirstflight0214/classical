@@ -698,12 +698,8 @@ audio.ontimeupdate = () => {
 };
 
 audio.onended = () => {
-  if (currentIdx < LIBRARY.length - 1) {
-    loadAndPlay(currentIdx + 1);
-  } else {
-    isPlaying = false;
-    updatePlayerUI();
-  }
+  const next = (currentIdx + 1) % LIBRARY.length;
+  loadAndPlay(next);
 };
 
 audio.onplay = () => { isPlaying = true; updatePlayerUI(); };
